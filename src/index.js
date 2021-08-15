@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
       <div id="root">${content}</div>
       <script src="bundle.js"></script>
     </body>
-  </html>
+  </html> 
   `;
   res.send(html);
 });

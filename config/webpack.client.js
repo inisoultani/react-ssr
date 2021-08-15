@@ -1,6 +1,8 @@
 const path = require('path');
+const merge = require('webpack-merge').merge;
+const commonConfig = require('./webpack.common.js');
 
-module.exports = {
+const clientConfig = {
   // inform webpack the root file of our
   // server application
   entry: './src/client/client.js',
@@ -11,25 +13,6 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(`${__dirname}/..`, 'public'),
   },
-
-  // inform webpack to run babel on every file it runs through
-  module: {
-    rules: [
-      {
-        test: /\.js?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        options: {
-          presets: [
-            '@babel/preset-react',
-            // '@babel/preset-stage-0',
-            [
-              '@babel/preset-env',
-              { targets: { browsers: ['last 2 versions'] } },
-            ],
-          ],
-        },
-      },
-    ],
-  },
 };
+
+module.exports = merge(clientConfig, commonConfig);
