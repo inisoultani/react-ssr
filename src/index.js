@@ -10,12 +10,9 @@ app.get('/', (req, res) => {
   // translate es2015 syntax into common js, so that node.js server recognize it
   const content = renderToString(<Home />);
   const html = `
-  <!DOCTYPE html>
-  <html lang="en">
+  <html>
     <head>
       <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>SSR</title>
     </head>
     <body>
