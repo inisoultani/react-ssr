@@ -6,7 +6,9 @@ const Home = () => {
   );
 
   useEffect(() => {
-    setText('this is home components rendered by React useEffect');
+    setText(
+      'this is home components rendered by React useEffect on page loaded',
+    );
   }, []);
 
   return (
