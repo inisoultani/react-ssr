@@ -7,6 +7,9 @@
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "dev:build-server": "webpack --config config/webpack.server.js --mode development --watch",
     "dev:build-client": "webpack --config config/webpack.client.js --mode development --watch",
+    "prod:build-server": "webpack --config config/webpack.server.js --mode production",
+    "prod:build-client": "webpack --config config/webpack.client.js --mode production",
+    "build": "npm-run-all --parallel prod:*",
     "dev": "npm-run-all --parallel dev:*"
   },
   "keywords": [],
