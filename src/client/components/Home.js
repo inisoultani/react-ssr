@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUser } from '../../redux/userSlice';
+import { fetchUserAsync } from '../../redux/userSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Home = () => {
   }, []);
 
   const onClick = (event) => {
-    dispatch(fetchUser());
+    dispatch(fetchUserAsync());
   };
 
   return (

@@ -6,7 +6,7 @@ import userSlice from './userSlice';
 let preloadedState = {};
 if (typeof window !== 'undefined') {
   // grab the state from a global variable injected into server generated HTML
-  preloadedState = window ? window.__PRELOADED_STATE__ : {};
+  preloadedState = window.__PRELOADED_STATE__;
 
   // mark the passed state to  be garbage-collected
   delete window.__PRELOADED_STATE__;

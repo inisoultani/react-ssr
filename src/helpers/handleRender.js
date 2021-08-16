@@ -2,24 +2,43 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Routes from '../client/Routes';
-import Comment from '../redux/Comment';
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
+import { renderRoutes, matchRoutes } from 'react-router-config';
 
 const handleRender = (req, res) => {
   // translate es2015 syntax into common js, so that node.js server recognize it
   const htmlContent = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
-        <Routes />
+        <div>{renderRoutes(Routes)}</div>
       </StaticRouter>
     </Provider>,
   );
 
-  // grab initial state from Redux store
-  const intialState = store.getState();
+  // console.log(matchRoutes(Routes, req.path));
+  // sample output of matchRoutes
+  // [
+  //   {
+  //     route: {
+  //       path: '/users',
+  //       loadData: [Function: loadData],
+  //       component: [Function: UsersList]
+  //     },
+  //     match: { path: '/users', url: '/users', isExact: true, params: {} }
+  //   }
+  // ]
+  const promises = matchRoutes(Routes, req.path).map(({ route }) => {
+    return route.loadData ? route.loadData(store) : null;
+  });
 
-  res.send(renderFullPage(htmlContent, intialState));
+  Promise.all(promises).then((values) => {
+    // console.log(values);
+
+    // grab initial state from Redux store
+    const intialState = store.getState();
+    res.send(renderFullPage(htmlContent, intialState));
+  });
 };
 
 // always keep in mind, the window.__PRELOADED_STATE__ must be declared before script bundle.js

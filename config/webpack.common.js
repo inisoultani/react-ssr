@@ -16,6 +16,7 @@ module.exports = {
               { targets: { browsers: ['last 2 versions'] } },
             ],
           ],
+          // below plugin for the async/await or createAsyncThunk to work on ssr
           plugins: ['@babel/plugin-transform-runtime'],
         },
       },

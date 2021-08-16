@@ -2,16 +2,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './Routes';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { combineReducers } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import { store } from '../redux/store';
+import { renderRoutes } from 'react-router-config';
 
 ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
-      <Routes />
+      <div>{renderRoutes(Routes)}</div>
     </BrowserRouter>
   </Provider>,
 
