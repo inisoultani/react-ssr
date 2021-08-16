@@ -4,7 +4,7 @@ const commonConfig = require('./webpack.common.js');
 
 const clientConfig = {
   // inform webpack the root file of our
-  // server application
+  // client entry point for the application
   entry: './src/client/client.js',
 
   // inform webpack where to put the output file
