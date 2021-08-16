@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Home from './components/Home';
-import UsersList, { loadData } from './components/UsersList';
+import HomePage from './pages/HomePage';
+import UsersListPage from './pages/UsersListPage';
 
 // const Routes = () => {
 //   return (
@@ -9,10 +9,10 @@ import UsersList, { loadData } from './components/UsersList';
 //       <Route exact path="/users">
 //         {populateInitialStateData().then((data) => {
 //           console.log(data);
-//           <UsersList initialData={data} />;
+//           <UsersListPage initialData={data} />;
 //         })}
 //       </Route>
-//       <Route exact path="/" component={Home} />
+//       <Route exact path="/" component={HomePage} />
 //     </div>
 //   );
 // };
@@ -21,11 +21,10 @@ export default [
   {
     path: '/',
     exact: true,
-    component: Home,
+    ...HomePage,
   },
   {
     path: '/users',
-    loadData: loadData,
-    component: UsersList,
+    ...UsersListPage,
   },
 ];

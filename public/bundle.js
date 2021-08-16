@@ -4005,9 +4005,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Home */ "./src/client/components/Home.js");
-/* harmony import */ var _components_UsersList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/UsersList */ "./src/client/components/UsersList.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _pages_HomePage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/HomePage */ "./src/client/pages/HomePage.js");
+/* harmony import */ var _pages_UsersListPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/UsersListPage */ "./src/client/pages/UsersListPage.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
 
 
 
@@ -4017,30 +4024,27 @@ __webpack_require__.r(__webpack_exports__);
 //       <Route exact path="/users">
 //         {populateInitialStateData().then((data) => {
 //           console.log(data);
-//           <UsersList initialData={data} />;
+//           <UsersListPage initialData={data} />;
 //         })}
 //       </Route>
-//       <Route exact path="/" component={Home} />
+//       <Route exact path="/" component={HomePage} />
 //     </div>
 //   );
 // };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([_objectSpread({
   path: '/',
-  exact: true,
-  component: _components_Home__WEBPACK_IMPORTED_MODULE_1__.default
-}, {
-  path: '/users',
-  loadData: _components_UsersList__WEBPACK_IMPORTED_MODULE_2__.loadData,
-  component: _components_UsersList__WEBPACK_IMPORTED_MODULE_2__.default
-}]);
+  exact: true
+}, _pages_HomePage__WEBPACK_IMPORTED_MODULE_2__.default), _objectSpread({
+  path: '/users'
+}, _pages_UsersListPage__WEBPACK_IMPORTED_MODULE_3__.default)]);
 
 /***/ }),
 
-/***/ "./src/client/components/Home.js":
-/*!***************************************!*\
-  !*** ./src/client/components/Home.js ***!
-  \***************************************/
+/***/ "./src/client/pages/HomePage.js":
+/*!**************************************!*\
+  !*** ./src/client/pages/HomePage.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4082,14 +4086,16 @@ var Home = function Home() {
   }, "Click me!"));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  component: Home
+});
 
 /***/ }),
 
-/***/ "./src/client/components/UsersList.js":
-/*!********************************************!*\
-  !*** ./src/client/components/UsersList.js ***!
-  \********************************************/
+/***/ "./src/client/pages/UsersListPage.js":
+/*!*******************************************!*\
+  !*** ./src/client/pages/UsersListPage.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -4129,7 +4135,10 @@ var UsersList = function UsersList() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Here's a big list of users", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, renderUsersList()));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UsersList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  component: UsersList,
+  loadData: loadData
+});
 
 /***/ }),
 
