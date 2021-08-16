@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUser } from '../../redux/userSlice';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [text, setText] = useState(
     'this is home components rendered as HTML string on server side',
   );
@@ -15,12 +17,14 @@ const Home = () => {
     console.log('current state : ', currentState);
   }, []);
 
+  const onClick = (event) => {
+    dispatch(fetchUser());
+  };
+
   return (
     <div>
       <div>{text}</div>
-      <button onClick={() => console.log('button home clicked')}>
-        Click me!
-      </button>
+      <button onClick={onClick}>Click me!</button>
     </div>
   );
 };

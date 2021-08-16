@@ -16,9 +16,8 @@ const handleRender = (req, res) => {
     </Provider>,
   );
 
-  const intialState = {
-    comments: [new Comment('comment from server')],
-  };
+  // grab initial state from Redux store
+  const intialState = store.getState();
 
   res.send(renderFullPage(htmlContent, intialState));
 };

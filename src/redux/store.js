@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import commentReducer from './commentSlice';
+import userSlice from './userSlice';
 
 // below checking is used when this store loaded on SSR
 let preloadedState = {};
@@ -16,6 +17,7 @@ if (typeof window !== 'undefined') {
 export const store = configureStore({
   reducer: {
     comments: commentReducer,
+    users: userSlice,
   },
   preloadedState: preloadedState,
   middleware: (getDefaultMiddleware) => {
