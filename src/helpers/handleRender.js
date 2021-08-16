@@ -7,15 +7,6 @@ import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 
 const handleRender = (req, res) => {
-  // translate es2015 syntax into common js, so that node.js server recognize it
-  const htmlContent = renderToString(
-    <Provider store={store}>
-      <StaticRouter location={req.path} context={{}}>
-        <div>{renderRoutes(Routes)}</div>
-      </StaticRouter>
-    </Provider>,
-  );
-
   // console.log(matchRoutes(Routes, req.path));
   // sample output of matchRoutes
   // [
@@ -34,6 +25,15 @@ const handleRender = (req, res) => {
 
   Promise.all(promises).then((values) => {
     // console.log(values);
+
+    // translate es2015 syntax into common js, so that node.js server recognize it
+    const htmlContent = renderToString(
+      <Provider store={store}>
+        <StaticRouter location={req.path} context={{}}>
+          <div>{renderRoutes(Routes)}</div>
+        </StaticRouter>
+      </Provider>,
+    );
 
     // grab initial state from Redux store
     const intialState = store.getState();
