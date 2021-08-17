@@ -17,9 +17,3 @@ const clientConfig = {
 };
 
 module.exports = merge(clientConfig, commonConfig);
-
-// aws secret key
-// tHAq8UTDrr2ceMCU+YPR9SQC+APBq4fjBeeLrKuS
-
-// aws access key id
-// AKIAUYH6E7BB6UUXTL6N
