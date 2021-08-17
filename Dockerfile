@@ -9,10 +9,11 @@ COPY package*.json ./
 
 
 RUN npm install
-RUN ls -la
-RUN npm run build
 
 COPY . .
+
+RUN ls -la
+RUN npm run build
 
 EXPOSE 3000
 CMD ["node", "build/bundle.js"]
