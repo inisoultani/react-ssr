@@ -18,6 +18,7 @@ const Home = () => {
   }, []);
 
   const onClick = (event) => {
+    console.log('onClick - test re-deploy');
     dispatch(fetchUserAsync());
   };
 
