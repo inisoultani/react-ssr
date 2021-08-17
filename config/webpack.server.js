@@ -17,6 +17,7 @@ const serverConfig = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(`${__dirname}/..`, 'build'),
+    clean: true,
   },
 
   externals: [webpackNodeExternals()],
