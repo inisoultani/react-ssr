@@ -1,13 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import baseApi from '../apis/baseApi';
+// import baseApi from '../apis/baseApi';
 import hash from 'object-hash';
 
 const initialState = [];
 
 export const fetchUserAsync = createAsyncThunk(
   'user/fetchUser',
-  async (thunkApi) => {
-    const response = await baseApi.get('users');
+  async (arg, thunkApi) => {
+    // console.log(thunkApi);
+    const api = thunkApi.extra;
+    const response = await api.get('users');
+    // console.log(response);
     return response.data;
   },
 );

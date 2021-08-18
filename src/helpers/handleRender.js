@@ -2,11 +2,12 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Routes from '../client/Routes';
-import { store } from '../redux/store';
+import { createStore } from '../redux/store';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 
 const handleRender = (req, res) => {
+  const store = createStore(req);
   // console.log(matchRoutes(Routes, req.path));
   // sample output of matchRoutes
   // [

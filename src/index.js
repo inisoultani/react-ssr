@@ -1,4 +1,5 @@
 import express from 'express';
+import proxy from 'express-http-proxy';
 import handleRender from './helpers/handleRender';
 
 const app = express();
@@ -8,6 +9,15 @@ const app = express();
 //   res.send(serverRenderer(req));
 // });
 
+app.use(
+  '/api',
+  proxy('http://react-ssr-api.herokuapp.com', {
+    proxyReqOptDecorator: (opts) => {
+      opts.headers['x-forwarded-host'] = 'localhost:3000';
+      return opts;
+    },
+  }),
+);
 app.use(express.static('public'));
 app.use(handleRender);
 
