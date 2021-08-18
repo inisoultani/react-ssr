@@ -82,15 +82,15 @@ const HeaderStyled = styled.div`
   & > div > a {
     border: none;
     padding: 10px 20px;
-    background-color: rgb(17, 50, 77);
-    color: white;
+    /* background-color: rgb(17, 50, 77); */
+    color: rgb(94 136 113);
     border-radius: 4px;
     margin: 7px 0;
   }
 
   & > div > a {
     border: none;
-    color: white;
+    color: rgb(94 136 113);
     border-radius: 4px;
   }
 
@@ -98,6 +98,7 @@ const HeaderStyled = styled.div`
   & > div > a:hover {
     background-color: #6b7aa1 !important;
     cursor: pointer;
+    color: white;
   }
 
   & > div > a.active {
