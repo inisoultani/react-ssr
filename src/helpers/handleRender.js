@@ -10,8 +10,8 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import App from '../client/components/App';
 
 const handleRender = (req, res) => {
+  // ref on handling ssr styled-component - https://styled-components.com/docs/advanced#server-side-rendering
   const sheet = new ServerStyleSheet();
-
   const store = createStore(req);
   // console.log(matchRoutes(Routes, req.path));
   // sample output of matchRoutes
