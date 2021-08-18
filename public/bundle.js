@@ -4937,44 +4937,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _redux_userSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../redux/userSlice */ "./src/redux/userSlice.js");
+/* harmony import */ var _babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_userSlice__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../redux/userSlice */ "./src/redux/userSlice.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+var _templateObject;
+
 
 
 
 
 
 var Home = function Home() {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('this is home components rendered as HTML string on server side'),
-      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__.default)(_useState, 2),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)('this is home components rendered as HTML string on server side'),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__.default)(_useState, 2),
       text = _useState2[0],
       setText = _useState2[1];
 
-  var currentState = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
+  var currentState = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.comments;
   });
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setText('this is home components rendered by React useEffect on page loaded');
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    setText('This is home components rendered by React useEffect on page loaded');
     console.log('current state : ', currentState);
   }, []);
 
   var onClick = function onClick(event) {
     console.log('onClick - test re-deploy');
-    dispatch((0,_redux_userSlice__WEBPACK_IMPORTED_MODULE_3__.fetchUserAsync)());
+    dispatch((0,_redux_userSlice__WEBPACK_IMPORTED_MODULE_4__.fetchUserAsync)());
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", null, text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("p", null, "Button below is an example to simulate button onClick event hydrate by React.Hydrate"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement(ButtonStyled, {
     onClick: onClick
-  }, "Click me!"));
+  }, "Click me"));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   component: Home
 });
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button(_templateObject || (_templateObject = (0,_babel_runtime_helpers_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__.default)(["\n  border: none;\n  padding: 10px 20px;\n  background-color: rgb(17, 50, 77);\n  color: white;\n  border-radius: 4px;\n  text-transform: uppercase;\n\n  &:hover {\n    background-color: #6b7aa1 !important;\n    cursor: pointer;\n  }\n"])));
 
 /***/ }),
 
