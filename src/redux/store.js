@@ -4,6 +4,7 @@ import userSlice from './userSlice';
 import thunk from 'redux-thunk';
 import clientApi from '../apis/clientApi';
 import serverApi from '../apis/serverApi';
+import ssrSlice from './ssrSlice';
 
 export const createStore = (req) => {
   // below checking is used when this store loaded on SSR
@@ -18,7 +19,7 @@ export const createStore = (req) => {
 
     // modify state to show the ability to change preloaded state when rendered by server
     preloadedState.comments[0].text = 'comment-modified-when-hydrate';
-
+    preloadedState.ssr.onServerRender = false;
     // specifically for client store, we need the extraArgument tobe clientApi
     // in order to simulate api proxy call
     extraArg = clientApi;
@@ -31,6 +32,7 @@ export const createStore = (req) => {
     reducer: {
       comments: commentReducer,
       users: userSlice,
+      ssr: ssrSlice,
     },
     preloadedState: preloadedState,
     middleware: (getDefaultMiddleware) => {

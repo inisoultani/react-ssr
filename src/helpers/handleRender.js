@@ -5,6 +5,7 @@ import Routes from '../client/Routes';
 import { createStore } from '../redux/store';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
+import App from '../client/components/App';
 
 const handleRender = (req, res) => {
   const store = createStore(req);
@@ -31,7 +32,9 @@ const handleRender = (req, res) => {
     const htmlContent = renderToString(
       <Provider store={store}>
         <StaticRouter location={req.path} context={{}}>
-          <div>{renderRoutes(Routes)}</div>
+          <App>
+            <div>{renderRoutes(Routes)}</div>
+          </App>
         </StaticRouter>
       </Provider>,
     );

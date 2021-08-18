@@ -12,8 +12,10 @@ const UsersList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //dispatch(fetchUserAsync());
-    console.log('state updated');
+    if (usersState.length === 0) {
+      dispatch(fetchUserAsync());
+      console.log('state updated');
+    }
   }, [usersState]);
 
   const renderUsersList = () => {

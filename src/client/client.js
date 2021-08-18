@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from '../redux/store';
 import { renderRoutes } from 'react-router-config';
+import App from './components/App';
 
 // console.log(module);
 
@@ -14,7 +15,9 @@ ReactDOM.hydrate(
   // since cookie header only needed by server-side store
   <Provider store={createStore()}>
     <BrowserRouter>
-      <div>{renderRoutes(Routes)}</div>
+      <App>
+        <div>{renderRoutes(Routes)}</div>
+      </App>
     </BrowserRouter>
   </Provider>,
 
