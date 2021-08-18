@@ -5,9 +5,13 @@ import Routes from '../client/Routes';
 import { createStore } from '../redux/store';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
+import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+
 import App from '../client/components/App';
 
 const handleRender = (req, res) => {
+  const sheet = new ServerStyleSheet();
+
   const store = createStore(req);
   // console.log(matchRoutes(Routes, req.path));
   // sample output of matchRoutes
@@ -32,26 +36,33 @@ const handleRender = (req, res) => {
     const htmlContent = renderToString(
       <Provider store={store}>
         <StaticRouter location={req.path} context={{}}>
-          <App>
-            <div>{renderRoutes(Routes)}</div>
-          </App>
+          <StyleSheetManager sheet={sheet.instance}>
+            <App>
+              <div>{renderRoutes(Routes)}</div>
+            </App>
+          </StyleSheetManager>
         </StaticRouter>
       </Provider>,
     );
 
+    // grab style generated from styled-component
+    const styleTags = sheet.getStyleTags();
+    sheet.seal();
+
     // grab initial state from Redux store
     const intialState = store.getState();
-    res.send(renderFullPage(htmlContent, intialState));
+    res.send(renderFullPage(htmlContent, styleTags, intialState));
   });
 };
 
 // always keep in mind, the window.__PRELOADED_STATE__ must be declared before script bundle.js
-const renderFullPage = (html, reduxInitialState) => {
+const renderFullPage = (html, styleTags, reduxInitialState) => {
   return `
   <html>
     <head>
       <meta charset="UTF-8" />
       <title>SSR</title>
+      ${styleTags}
     </head>
     <body>
       <div id="root">${html}</div>
