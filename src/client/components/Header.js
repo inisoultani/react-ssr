@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ssrSlice from '../../redux/ssrSlice';
+import PeopleIcon from '@material-ui/icons/People';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
+import WebRoundedIcon from '@material-ui/icons/WebRounded';
 
 const CustomLink = (onServerRender) => {
   return (props) => {
@@ -25,19 +29,25 @@ const Header = () => {
   const ssrState = useSelector((state) => state.ssr);
   return (
     <HeaderStyled>
-      <div>
-        <h3>
+      <HeaderLogoStyled>
+        <h2>
           <Link to={'/'} exact="exact">
+            <WebRoundedIcon fontSize="large" />
             SSR Stuff
           </Link>
-        </h3>
-      </div>
+        </h2>
+      </HeaderLogoStyled>
       <HeaderMenuStyled>
-        <Link to={'/users'}>Users</Link>
+        <Link to={'/users'}>
+          <PeopleIcon fontSize="large" />
+          Users
+        </Link>
         <Link to={'/'} exact="exact">
+          <VerifiedUserIcon fontSize="large" />
           Admins
         </Link>
         <Link to={'/'} exact="exact">
+          <VpnKeyRoundedIcon fontSize="large" />
           Login
         </Link>
       </HeaderMenuStyled>
@@ -55,7 +65,7 @@ const HeaderStyled = styled.div`
   border-radius: 4px 4px 0 0;
 
   &:first-child {
-    padding-left: 20px;
+    padding-left: 28px;
     color: white;
   }
 
@@ -75,6 +85,7 @@ const HeaderStyled = styled.div`
     background-color: rgb(17, 50, 77);
     color: white;
     border-radius: 4px;
+    margin: 7px 0;
   }
 
   & > div > a {
@@ -99,4 +110,18 @@ const HeaderMenuStyled = styled.div`
   display: flex;
   column-gap: 10px;
   justify-content: space-between;
+
+  & > a {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+`;
+
+const HeaderLogoStyled = styled.div`
+  & > h2 > a {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
 `;
