@@ -2,9 +2,9 @@ import React from 'react';
 import Header from './Header';
 import styled from 'styled-components';
 import {
-  fetchCurrentUserAsync,
   selectCurrentUser,
-} from '../../redux/userSlice';
+  fetchCurrentUserAsync,
+} from '../../redux/authSlice';
 import { useSelector } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 

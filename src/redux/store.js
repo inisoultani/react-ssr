@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import clientApi from '../apis/clientApi';
 import serverApi from '../apis/serverApi';
 import ssrSlice from './ssrSlice';
+import authSlice from './authSlice';
 
 export const createStore = (req) => {
   // below checking is used when this store loaded on SSR
@@ -33,6 +34,7 @@ export const createStore = (req) => {
       comments: commentReducer,
       users: userSlice,
       ssr: ssrSlice,
+      auth: authSlice,
     },
     preloadedState: preloadedState,
     middleware: (getDefaultMiddleware) => {

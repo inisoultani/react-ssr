@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ssrSlice from '../../redux/ssrSlice';
 import PeopleIcon from '@material-ui/icons/People';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
