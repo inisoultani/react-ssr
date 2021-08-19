@@ -9,11 +9,15 @@ const app = express();
 //   res.send(serverRenderer(req));
 // });
 
+console.log(process.env);
+const forwardedHost = process.env.X_FORWARDED_HOST
+  ? process.env.X_FORWARDED_HOST
+  : 'localhost:3000';
 app.use(
   '/api',
   proxy('http://react-ssr-api.herokuapp.com', {
     proxyReqOptDecorator: (opts) => {
-      opts.headers['x-forwarded-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] = forwardedHost;
       return opts;
     },
   }),

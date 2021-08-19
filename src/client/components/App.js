@@ -28,8 +28,7 @@ export default { component: App, loadData };
 
 const AppStyled = styled.div`
   background-color: #e7e0c9;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', Verdana, sans-serif;
   border-radius: 4px;
 `;
 

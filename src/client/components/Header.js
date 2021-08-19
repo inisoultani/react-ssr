@@ -11,15 +11,6 @@ const CustomLink = (props) => {
   const { navigate, ...rest } = props;
   return <a {...rest} />;
 };
-const CustomH3Link = (props) => {
-  const { navigate, ...rest } = props;
-
-  return (
-    <h3>
-      <a {...rest}>{props.children}</a>
-    </h3>
-  );
-};
 
 const Header = ({ currentUser }) => {
   const ssrState = useSelector((state) => state.ssr);
