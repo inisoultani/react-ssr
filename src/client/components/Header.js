@@ -1,18 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PeopleIcon from '@material-ui/icons/People';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
 import WebRoundedIcon from '@material-ui/icons/WebRounded';
 
-const CustomLink = (onServerRender) => {
-  return (props) => {
-    const { navigate, ...rest } = props;
-    console.log(onServerRender);
-    return onServerRender ? <a {...rest} /> : <a {...props} />;
-  };
+const CustomLink = (props) => {
+  const { navigate, ...rest } = props;
+  return <a {...rest} />;
 };
 const CustomH3Link = (props) => {
   const { navigate, ...rest } = props;
@@ -41,14 +38,17 @@ const Header = ({ currentUser }) => {
           <PeopleIcon fontSize="large" />
           Users
         </Link>
-        <Link to={'/'} exact="exact">
+        <Link to={'/admins'}>
           <VerifiedUserIcon fontSize="large" />
           Admins
         </Link>
-        <Link to={'/'} exact="exact">
+        <NavLink
+          to={currentUser ? '/api/logout' : '/api/auth/google'}
+          component={CustomLink}
+        >
           <VpnKeyRoundedIcon fontSize="large" />
           {currentUser ? 'Logout' : 'Login'}
-        </Link>
+        </NavLink>
       </HeaderMenuStyled>
     </HeaderStyled>
   );

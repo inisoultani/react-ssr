@@ -3,6 +3,7 @@ import { fetchUserAsync, selectUsers } from '../../redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const loadData = (store) => {
+  
   return store.dispatch(fetchUserAsync());
 };
 

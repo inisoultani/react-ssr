@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
 export const loadData = (store) => {
+  // console.log('App load data triggered');
   return store.dispatch(fetchCurrentUserAsync());
 };
 

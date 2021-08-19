@@ -5,11 +5,11 @@ import hash from 'object-hash';
 const initialState = { currentUser: null };
 
 export const fetchCurrentUserAsync = createAsyncThunk(
-  'user/fetchCurrentUser',
+  'auth/fetchCurrentUser',
   async (arg, thunkApi) => {
     // console.log(thunkApi);
     const api = thunkApi.extra;
-    const response = await api.get('current_users');
+    const response = await api.get('current_user');
     // console.log(response);
     return response.data;
   },
@@ -22,7 +22,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCurrentUserAsync.fulfilled, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.currentUser = action.payload || false;
       })
       .addDefaultCase((state, action) => {});
