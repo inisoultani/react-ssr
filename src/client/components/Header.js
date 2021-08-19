@@ -25,7 +25,7 @@ const CustomH3Link = (props) => {
   );
 };
 
-const Header = () => {
+const Header = ({ currentUser }) => {
   const ssrState = useSelector((state) => state.ssr);
   return (
     <HeaderStyled>
@@ -48,7 +48,7 @@ const Header = () => {
         </Link>
         <Link to={'/'} exact="exact">
           <VpnKeyRoundedIcon fontSize="large" />
-          Login
+          {currentUser ? 'Logout' : 'Login'}
         </Link>
       </HeaderMenuStyled>
     </HeaderStyled>
@@ -96,7 +96,7 @@ const HeaderStyled = styled.div`
 
   & > div > button:hover,
   & > div > a:hover {
-    background-color: #6b7aa1 !important;
+    background-color: rgb(94 136 113) !important;
     cursor: pointer;
     color: white;
   }

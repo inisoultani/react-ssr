@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchUserAsync, selectUsers } from '../../redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import baseApi from '../../apis/serverApi';
 
 export const loadData = (store) => {
   return store.dispatch(fetchUserAsync());

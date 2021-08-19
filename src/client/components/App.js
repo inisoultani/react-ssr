@@ -1,17 +1,29 @@
 import React from 'react';
 import Header from './Header';
 import styled from 'styled-components';
+import {
+  fetchCurrentUserAsync,
+  selectCurrentUser,
+} from '../../redux/userSlice';
+import { useSelector } from 'react-redux';
+import { renderRoutes } from 'react-router-config';
+
+export const loadData = (store) => {
+  return store.dispatch(fetchCurrentUserAsync());
+};
 
 const App = (props) => {
+  const currentUserState = useSelector(selectCurrentUser);
+
   return (
     <AppStyled>
-      <Header />
-      <ContentStyled>{props.children}</ContentStyled>
+      <Header currentUser={currentUserState} />
+      <ContentStyled>{renderRoutes(props.route.routes)}</ContentStyled>
     </AppStyled>
   );
 };
 
-export default App;
+export default { component: App, loadData };
 
 const AppStyled = styled.div`
   background-color: #e7e0c9;
@@ -22,4 +34,5 @@ const AppStyled = styled.div`
 
 const ContentStyled = styled.div`
   padding: 10px 20px;
+  color: #726e62;
 `;

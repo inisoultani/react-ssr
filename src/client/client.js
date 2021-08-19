@@ -15,9 +15,7 @@ ReactDOM.hydrate(
   // since cookie header only needed by server-side store
   <Provider store={createStore()}>
     <BrowserRouter>
-      <App>
-        <div>{renderRoutes(Routes)}</div>
-      </App>
+      <div>{renderRoutes(Routes)}</div>
     </BrowserRouter>
   </Provider>,
 

@@ -37,9 +37,7 @@ const handleRender = (req, res) => {
       <Provider store={store}>
         <StaticRouter location={req.path} context={{}}>
           <StyleSheetManager sheet={sheet.instance}>
-            <App>
-              <div>{renderRoutes(Routes)}</div>
-            </App>
+            <div>{renderRoutes(Routes)}</div>
           </StyleSheetManager>
         </StaticRouter>
       </Provider>,
