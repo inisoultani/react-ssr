@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import App from './components/App';
+import NotFoundPage from './pages/NotFoundPage';
 
 // const Routes = () => {
 //   return (
@@ -30,6 +31,9 @@ export default [
       {
         path: '/users',
         ...UsersListPage,
+      },
+      {
+        ...NotFoundPage,
       },
     ],
   },

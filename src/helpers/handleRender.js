@@ -13,6 +13,7 @@ const handleRender = (req, res) => {
   // ref on handling ssr styled-component - https://styled-components.com/docs/advanced#server-side-rendering
   const sheet = new ServerStyleSheet();
   const store = createStore(req);
+  const context = {};
   // console.log(matchRoutes(Routes, req.path));
   // sample output of matchRoutes
   // [
@@ -35,13 +36,15 @@ const handleRender = (req, res) => {
     // translate es2015 syntax into common js, so that node.js server recognize it
     const htmlContent = renderToString(
       <Provider store={store}>
-        <StaticRouter location={req.path} context={{}}>
+        <StaticRouter location={req.path} context={context}>
           <StyleSheetManager sheet={sheet.instance}>
             <div>{renderRoutes(Routes)}</div>
           </StyleSheetManager>
         </StaticRouter>
       </Provider>,
     );
+
+    if (context.notFound) res.status(404);
 
     // grab style generated from styled-component
     const styleTags = sheet.getStyleTags();
