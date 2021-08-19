@@ -28,6 +28,9 @@ const userSlice = createSlice({
             state.push(user);
         });
       })
+      .addCase(fetchUserAsync.rejected, (state, action) => {
+        console.log(action);
+      })
       .addDefaultCase((state, action) => {});
   },
 });

@@ -25,6 +25,9 @@ const authSlice = createSlice({
         // console.log(action);
         state.currentUser = action.payload || false;
       })
+      .addCase(fetchCurrentUserAsync.rejected, (state, action) => {
+        console.log(action);
+      })
       .addDefaultCase((state, action) => {});
   },
 });

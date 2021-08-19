@@ -30,7 +30,7 @@ const handleRender = (req, res) => {
     return route.loadData ? route.loadData(store) : null;
   });
 
-  Promise.all(promises).then((values) => {
+  Promise.all([...promises]).then((values) => {
     // console.log(values);
 
     // translate es2015 syntax into common js, so that node.js server recognize it
@@ -43,6 +43,12 @@ const handleRender = (req, res) => {
         </StaticRouter>
       </Provider>,
     );
+
+    // whenever <Redirect /> rendered it will push some data to context
+    // if context.url exist, then we need to redirect to the url instead send the HTML.
+    // if (context.url) {
+    //   return res.redirect(301, context.url);
+    // }
 
     if (context.notFound) res.status(404);
 

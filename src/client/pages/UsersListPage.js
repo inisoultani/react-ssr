@@ -1,15 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { fetchUserAsync, selectUsers } from '../../redux/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const loadData = (store) => {
-  
   return store.dispatch(fetchUserAsync());
+
+  // below code will causing promise on the handleRender.js hanging,  the promise extracted here
+  // we need to manually to resolve the loadData function with new promises
+  // without unwrap way, all promise will resolved with details error in the then((values) ==>)
+
+  // store
+  // .dispatch(fetchUserAsync())
+  // .unwrap()
+  // .then((originalPromiseResult) => {})
+  // .catch((error) => {
+  //   console.log('LoadData UsersListPage : ', error);
+  //   return new Promise((resolve, reject) => {
+  //     resolve('LoadData UsersListPage failed');
+  //   });
+  // });
 };
 
 const UsersList = () => {
   const usersState = useSelector(selectUsers);
   const dispatch = useDispatch();
+  // const loaded = useRef(false);
 
   useEffect(() => {
     if (usersState.length === 0) {
@@ -17,6 +32,12 @@ const UsersList = () => {
       console.log('state updated');
     }
   }, [usersState]);
+
+  // useEffect(() => {
+  //   console.log('UserList loaded');
+  //   dispatch(fetchUserAsync());
+  //   loaded.current = true;
+  // });
 
   const renderUsersList = () => {
     return usersState.map((user) => {
@@ -26,7 +47,7 @@ const UsersList = () => {
 
   return (
     <div>
-      Here's a big list of users
+      <h2>Here's a big list of users</h2>
       <ul>{renderUsersList()}</ul>
     </div>
   );

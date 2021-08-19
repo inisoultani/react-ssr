@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import App from './components/App';
 import NotFoundPage from './pages/NotFoundPage';
+import AdminPage from './pages/AdminPage';
 
 // const Routes = () => {
 //   return (
@@ -31,6 +32,10 @@ export default [
       {
         path: '/users',
         ...UsersListPage,
+      },
+      {
+        path: '/admins',
+        ...AdminPage,
       },
       {
         ...NotFoundPage,
