@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
+import App from './components/App';
 
 // const Routes = () => {
 //   return (
@@ -19,12 +20,17 @@ import UsersListPage from './pages/UsersListPage';
 
 export default [
   {
-    path: '/',
-    exact: true,
-    ...HomePage,
-  },
-  {
-    path: '/users',
-    ...UsersListPage,
+    ...App,
+    routes: [
+      {
+        path: '/',
+        exact: true,
+        ...HomePage,
+      },
+      {
+        path: '/users',
+        ...UsersListPage,
+      },
+    ],
   },
 ];

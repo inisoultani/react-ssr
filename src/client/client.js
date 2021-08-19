@@ -4,11 +4,16 @@ import ReactDOM from 'react-dom';
 import Routes from './Routes';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from '../redux/store';
+import { createStore } from '../redux/store';
 import { renderRoutes } from 'react-router-config';
+import App from './components/App';
+
+// console.log(module);
 
 ReactDOM.hydrate(
-  <Provider store={store}>
+  // no need to pass down the req object
+  // since cookie header only needed by server-side store
+  <Provider store={createStore()}>
     <BrowserRouter>
       <div>{renderRoutes(Routes)}</div>
     </BrowserRouter>
