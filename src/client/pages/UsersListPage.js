@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { fetchUserAsync, selectUsers } from '../../redux/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import useGet from '../../hooks/useGet';
 
 export const loadData = (store) => {
   return store.dispatch(fetchUserAsync());
@@ -22,16 +22,7 @@ export const loadData = (store) => {
 };
 
 const UsersList = () => {
-  const usersState = useSelector(selectUsers);
-  const dispatch = useDispatch();
-  // const loaded = useRef(false);
-
-  useEffect(() => {
-    if (usersState.length === 0) {
-      dispatch(fetchUserAsync());
-      console.log('state updated');
-    }
-  }, [usersState]);
+  const [usersState] = useGet(selectUsers, fetchUserAsync);
 
   // useEffect(() => {
   //   console.log('UserList loaded');

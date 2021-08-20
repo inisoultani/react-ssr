@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import commentReducer from './commentSlice';
 import userSlice from './userSlice';
-import thunk from 'redux-thunk';
 import clientApi from '../apis/clientApi';
 import serverApi from '../apis/serverApi';
 import ssrSlice from './ssrSlice';
 import authSlice from './authSlice';
+import adminSlice from './adminSlice';
 
 export const createStore = (req) => {
   // below checking is used when this store loaded on SSR
@@ -33,6 +33,7 @@ export const createStore = (req) => {
     reducer: {
       comments: commentReducer,
       users: userSlice,
+      admins: adminSlice,
       ssr: ssrSlice,
       auth: authSlice,
     },
