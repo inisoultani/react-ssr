@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCurrentUserAsync } from '../../redux/authSlice';
 import HomePage from '../pages/HomePage';
