@@ -19,8 +19,8 @@ export const createStore = (req) => {
     delete window.__PRELOADED_STATE__;
 
     // modify state to show the ability to change preloaded state when rendered by server
-    preloadedState.comments[0].text = 'comment-modified-when-hydrate';
-    preloadedState.ssr.onServerRender = false;
+    // preloadedState.comments[0].text = 'comment-modified-when-hydrate';
+    // preloadedState.ssr.onServerRender = false;
     // specifically for client store, we need the extraArgument tobe clientApi
     // in order to simulate api proxy call
     extraArg = clientApi;

@@ -1,5 +1,17 @@
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+
 module.exports = {
   devtool: 'source-map',
+
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'container',
+      remotes: {
+        marketing: 'marketing@http://localhost:8081/remoteEntry.js',
+      },
+    }),
+  ],
+
   // inform webpack to run babel on every file it runs through
   module: {
     rules: [
