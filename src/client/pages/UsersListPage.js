@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { fetchUserAsync, selectUsers } from '../../redux/userSlice';
 import useGet from '../../hooks/useGet';
 
@@ -36,9 +37,19 @@ const UsersList = () => {
     });
   };
 
+  const renderHead = () => {
+    return (
+      <Helmet>
+        <title>{`${usersState.length} Users`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    );
+  };
+
   return (
     <div>
-      <h2>Here's a big list of users</h2>
+      {renderHead()}
+      <h2>Here's a big list of users :</h2>
       <ul>{renderUsersList()}</ul>
     </div>
   );

@@ -6,6 +6,7 @@ import { createStore } from '../redux/store';
 import { Provider } from 'react-redux';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import App from '../client/components/App';
 
@@ -64,10 +65,14 @@ const handleRender = (req, res) => {
 
 // always keep in mind, the window.__PRELOADED_STATE__ must be declared before script bundle.js
 const renderFullPage = (html, styleTags, reduxInitialState) => {
+  const helmet = Helmet.renderStatic();
+
   return `
   <html>
     <head>
       <meta charset="UTF-8" />
+      ${helmet.title.toString()}
+      ${helmet.meta.toString()}
       <title>SSR</title>
       ${styleTags}
     </head>
