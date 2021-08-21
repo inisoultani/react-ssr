@@ -11,7 +11,10 @@ const MarketingPage = () => {
     if (isClientBrowser()) {
       console.log('rerender Marketing page');
       import('marketing/MarketingApp').then(({ mount }) => {
-        console.log('MarketingApp.mount : ', mount);
+        console.log(
+          'MarketingApp.history.location.pathname : ',
+          history.location.pathname,
+        );
         const { onContainerNavigate } = mount(ref.current, {
           onRemoteNavigate: (location) => {
             console.log(history.location.pathname);
@@ -26,8 +29,12 @@ const MarketingPage = () => {
             }
             //history.push(location.pathname);
           },
+          initialEntry:
+            history.location.pathname === '/marketing'
+              ? '/'
+              : history.location.pathname,
         });
-        history.listen(onContainerNavigate);
+        //history.listen(onContainerNavigate);
       });
     }
   }, []);
