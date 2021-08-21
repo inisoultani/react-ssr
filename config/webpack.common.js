@@ -1,5 +1,9 @@
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
+const domain = process.env.PRODUCTION_DOMAIN
+  ? process.env.PRODUCTION_DOMAIN
+  : 'http://localhost:8081/remoteEntry.js';
+
 module.exports = {
   devtool: 'source-map',
 
@@ -32,7 +36,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        marketing: 'marketing@http://localhost:8081/remoteEntry.js',
+        marketing: `marketing@${domain}`,
       },
     }),
   ],
