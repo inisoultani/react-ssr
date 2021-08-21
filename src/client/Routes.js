@@ -5,6 +5,7 @@ import UsersListPage from './pages/UsersListPage';
 import App from './components/App';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminPage from './pages/AdminPage';
+import MarketingPage from './pages/MarketingPage';
 
 // const Routes = () => {
 //   return (
@@ -36,6 +37,14 @@ export default [
       {
         path: '/admins',
         ...AdminPage,
+      },
+      {
+        path: '/marketing',
+        ...MarketingPage,
+      },
+      {
+        path: '/pricing',
+        ...MarketingPage,
       },
       {
         ...NotFoundPage,

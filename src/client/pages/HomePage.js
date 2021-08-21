@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserAsync } from '../../redux/userSlice';
 import styled from 'styled-components';
-import MarketingPage from './MarketingPage';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const Home = () => {
         Button below is an example to simulate button onClick event hydrate by
         React.Hydrate
       </p>
-      {isClientBrowser ? <MarketingPage /> : ''}
+
       <ButtonStyled onClick={onClick}>Click me</ButtonStyled>
     </div>
   );

@@ -6,6 +6,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded';
 import WebRoundedIcon from '@material-ui/icons/WebRounded';
+import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 
 const CustomLink = (props) => {
   const { navigate, ...rest } = props;
@@ -32,6 +33,10 @@ const Header = ({ currentUser }) => {
         <Link to={'/admins'}>
           <VerifiedUserIcon fontSize="large" />
           Admins
+        </Link>
+        <Link to={'/marketing'}>
+          <BusinessCenterIcon fontSize="large" />
+          Marketing - MFE
         </Link>
         <NavLink
           to={currentUser ? '/api/logout' : '/api/auth/google'}
