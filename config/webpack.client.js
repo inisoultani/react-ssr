@@ -1,7 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge').merge;
 const commonConfig = require('./webpack.common.js');
-const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const clientConfig = {
   // inform webpack the root file of our
@@ -15,15 +14,5 @@ const clientConfig = {
     path: path.resolve(`${__dirname}/..`, 'public'),
     clean: true,
   },
-
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'container',
-      remotes: {
-        marketing: 'marketing@http://localhost:8081/remoteEntry.js',
-      },
-    }),
-  ],
 };
-
 module.exports = merge(clientConfig, commonConfig);

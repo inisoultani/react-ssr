@@ -10,6 +10,10 @@ open terminal and run command :
 ➜ react-ssr (main) ✔ npm run dev
 ```
 
+## Integration with Micro Frontend project
+
+This project also has an implementation related to react micro frontend, but only on the client side for now, since I have not found any source related to micro frontend implementation on the server side. To make the menu `Marketing-MFE` works, we need to clone project [mfe](https://github.com/inisoultani/mfe) and start the `marketing` sub project with command `npm run start`
+
 ## How to deploy to production
 
 in this sample we deploy the node.js app to the AWS Elastic Beanstalk (EB). There are many ways to deploy the app, for example, we can use `github action`, `gitlab CI/CD`, `eb cli`. In this example we will be use `eb cli` and using `Docker` platform type.
