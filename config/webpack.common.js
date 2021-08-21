@@ -49,7 +49,10 @@ module.exports = {
             ],
           ],
           // below plugin for the async/await or createAsyncThunk to work on ssr
-          plugins: ['@babel/plugin-transform-runtime'],
+          plugins: [
+            '@babel/plugin-transform-runtime',
+            '@babel/plugin-syntax-dynamic-import',
+          ],
         },
       },
     ],
