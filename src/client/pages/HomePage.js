@@ -8,7 +8,7 @@ const Home = () => {
   const [text, setText] = useState(
     'this is home components rendered as HTML string on server side',
   );
-
+  const isClientBrowser = () => typeof window !== 'undefined';
   const currentState = useSelector((state) => state.comments);
 
   useEffect(() => {
@@ -30,6 +30,7 @@ const Home = () => {
         Button below is an example to simulate button onClick event hydrate by
         React.Hydrate
       </p>
+
       <ButtonStyled onClick={onClick}>Click me</ButtonStyled>
     </div>
   );

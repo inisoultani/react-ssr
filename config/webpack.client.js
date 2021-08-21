@@ -15,5 +15,4 @@ const clientConfig = {
     clean: true,
   },
 };
-
 module.exports = merge(clientConfig, commonConfig);
